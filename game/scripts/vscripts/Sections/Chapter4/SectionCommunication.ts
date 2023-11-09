@@ -56,7 +56,7 @@ function onStart(complete: () => void) {
 
     graph = tg.withGoals(_ => goalTracker.getGoals(),
         tg.seq([
-            tg.immediate(_ => shared.blockades.direJungleLowToHighground.destroy()),
+            // tg.immediate(_ => shared.blockades.direJungleLowToHighground.destroy()),
 
             tg.spawnUnit(tsunamiName, allyHeroStartLocation, DOTATeam_t.DOTA_TEAM_GOODGUYS, tsunamiName, true),
             tg.spawnUnit(kunkkaName, allyHeroStartLocation, DOTATeam_t.DOTA_TEAM_GOODGUYS, kunkkaName, true),
@@ -181,7 +181,7 @@ function onStart(complete: () => void) {
                 ]),
                 tg.seq([
                     tg.immediate(_ => goalGoToTopBountyRune.start()),
-                    tg.immediate(_ => shared.blockades.direJungleLowgroundRiver.destroy()),
+                    // tg.immediate(_ => shared.blockades.direJungleLowgroundRiver.destroy()),
                     tg.goToLocation(bountyRuneLocation, [], false),
                 ])
             ]),

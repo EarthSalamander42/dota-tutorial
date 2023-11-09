@@ -15,7 +15,7 @@ const requiredState: RequiredState = {
     requireSunsfanGolem: true,
     heroLocation: Vector(-2000, 3800, 256),
     requireRiki: true,
-    rikiLocation: Vector(-1000, 4400, 256),
+    rikiLocation: Vector(-2200, 3800, 256),
     heroLevel: 6,
     heroAbilityMinLevels: [1, 1, 1, 1],
     heroItems: { "item_greater_crit": 1, "item_mysterious_hat": 1 },
@@ -28,8 +28,8 @@ const requiredState: RequiredState = {
 let canPlayerTakeOutpost = false
 let allowUseItem = false;
 const dustName = "item_dust";
-const dustLocation = Vector(-1700, 3800, 256);
-const lastSawRikiLocation = Vector(-1300, 4200);
+const dustLocation = Vector(-1000, 4500, 256);
+const lastSawRikiLocation = Vector(-1790, 3760);
 const rikiName = CustomNpcKeys.Riki;
 // UI Highlighting Paths
 const inventorySlot1UIPath = "HUDElements/lower_hud/center_with_stats/center_block/inventory/inventory_items/InventoryContainer/inventory_list_container/inventory_list/inventory_slot_1";
@@ -53,7 +53,7 @@ function onStart(complete: () => void) {
 
     graph = tg.withGoals(_ => goalTracker.getGoals(),
         tg.seq([
-            tg.immediate(_ => shared.blockades.direJungleLowToHighground.destroy()),
+            // tg.immediate(_ => shared.blockades.direJungleLowToHighground.destroy()),
             tg.immediate(_ => setUnitPacifist(playerHero, true)),
             // Part 0: Pick up and use dust
             tg.withHighlights(tg.seq([
@@ -129,6 +129,7 @@ function onStart(complete: () => void) {
                 const tricksOfTheTrade = riki.GetAbilityByIndex(2);
                 if (tricksOfTheTrade) {
                     riki.CastAbilityOnPosition(riki.GetAbsOrigin().__add(Vector(-200, 100)), tricksOfTheTrade, 0);
+                    riki.Purge(false, true, false, false, false); // Purge dust
                 }
             }),
             tg.audioDialog(LocalizationKey.Script_4_RTZ_getaway, LocalizationKey.Script_4_RTZ_getaway, ctx => ctx[rikiName], 2.5),

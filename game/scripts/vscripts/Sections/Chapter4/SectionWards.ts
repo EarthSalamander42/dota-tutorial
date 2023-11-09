@@ -14,19 +14,19 @@ let graph: tg.TutorialStep | undefined = undefined;
 const requiredState: RequiredState = {
     requireSlacksGolem: true,
     requireSunsfanGolem: true,
-    heroLocation: Vector(-3000, 3800, 128),
+    heroLocation: Vector(-1810, 3330, 128),
     heroLevel: 6,
     heroAbilityMinLevels: [1, 1, 1, 1],
     heroItems: { "item_greater_crit": 1, "item_mysterious_hat": 1 },
     requireRiki: true,
-    rikiLocation: Vector(-1800, 4000, 256),
+    rikiLocation: Vector(-1600, 3800, 256),
     blockades: Object.values(shared.blockades),
     topDireT1TowerStanding: false
 };
 
-const markerLocation = Vector(-2800, 3590, 512);
-const wardLocationObs = Vector(-3400, 3800);
-const wardLocationSentry = Vector(-3400, 4000);
+const markerLocation = Vector(-766, 3584, 512);
+const wardLocationObs = Vector(-1331, 3687);
+const wardLocationSentry = Vector(-1526, 3687);
 const betweenWardsLocation = (wardLocationObs.__add(wardLocationSentry).__mul(0.5))
 
 const rikiName = CustomNpcKeys.Riki;
@@ -45,14 +45,14 @@ const cliffLocation3 = Vector(-4354, -1006);
 const cliffLocation4 = Vector(-4095, 1565);
 
 const invisHeroInfo = [
-    { name: "npc_dota_hero_clinkz", loc: Vector(-2200, 3600, 256) },
-    { name: "npc_dota_hero_mirana", loc: Vector(-2000, 3800, 256) },
-    { name: "npc_dota_hero_bounty_hunter", loc: Vector(-2000, 4100, 256) },
-    { name: "npc_dota_hero_invoker", loc: Vector(-2000, 4200, 256) },
-    { name: "npc_dota_hero_nyx_assassin", loc: Vector(-1800, 4000, 256) },
-    { name: "npc_dota_hero_slark", loc: Vector(-1800, 4200, 256) },
-    { name: "npc_dota_hero_weaver", loc: Vector(-1600, 4100, 256) },
-    { name: "npc_dota_hero_sand_king", loc: Vector(-1600, 3800, 256) },
+    { name: "npc_dota_hero_clinkz", loc: Vector(-3200, 3600, 256) },
+    { name: "npc_dota_hero_mirana", loc: Vector(-2900, 3800, 256) },
+    { name: "npc_dota_hero_bounty_hunter", loc: Vector(-2900, 4100, 256) },
+    { name: "npc_dota_hero_invoker", loc: Vector(-2900, 4200, 256) },
+    { name: "npc_dota_hero_nyx_assassin", loc: Vector(-2700, 4000, 256) },
+    { name: "npc_dota_hero_slark", loc: Vector(-2700, 4200, 256) },
+    { name: "npc_dota_hero_weaver", loc: Vector(-2500, 4100, 256) },
+    { name: "npc_dota_hero_sand_king", loc: Vector(-2500, 3800, 256) },
 ];
 
 // UI Highlighting Paths
@@ -204,7 +204,7 @@ function onStart(complete: () => void) {
                     tg.neverComplete()
                 ]),
                 tg.seq([
-                    tg.immediate(_ => shared.blockades.direJungleLowToHighground.destroy()),
+                    // tg.immediate(_ => shared.blockades.direJungleLowToHighground.destroy()),
                     tg.completeOnCheck(context => playerHero.GetAbsOrigin().__sub(context[rikiName].GetAbsOrigin()).Length2D() < 620, 0.1),
                 ])
             ]),

@@ -176,6 +176,12 @@ export class GameMode {
     }
 
     ExecuteOrderFilter(event: ExecuteOrderFilterEvent): boolean {
+        if (event.order_type === dotaunitorder_t.DOTA_UNIT_ORDER_CAST_POSITION) {
+            const targetPosition2D = Vector(event.position_x, event.position_y);
+            const targetZ = event.position_z;
+            print("Ping at: ", targetPosition2D, targetZ)
+        }
+
         // Cancel orders if false
         if (this.tutorial.currentSection && this.tutorial.currentSection.orderFilter && !this.tutorial.currentSection.orderFilter(event)) {
             return false;
